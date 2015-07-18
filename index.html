@@ -4,7 +4,7 @@
   <head>
     <meta charset="utf-8">
 
-    <title>reveal.js - The HTML Presentation Framework</title>
+    <title>Tests - Campus d'Estiu d'Innovació Tecnològica 2015 - Habitissimo</title>
 
     <meta name="description" content="A framework for easily creating beautiful presentations using HTML">
     <meta name="author" content="Hakim El Hattab">
@@ -46,10 +46,10 @@
         </section>
 
         <section>
-          <h2>Jordi Llull Chavarría</h2>
+          <h2>Jordi Llull</h2>
           <p><strong>CTO</strong> a <a href="http://habitissimo.com" target="blank">habitissimo</a></p>
           <p>
-            <small>Jodi Llull / <a href="http://twitter.com/JordiLlull" target="blank">@JordiLlull</a></small>
+            <small><a href="http://twitter.com/JordiLlull" target="blank">@JordiLlull</a></small>
           </p>
           <img alt="Jordi Llull" data-src="img/me.jpg" style="width: 50%"/>
 
@@ -79,7 +79,12 @@
               <img data-src="img/internship.png" style="width: 50%; position: relative; top: 0; left: 0;" class="">
               <img data-src="img/cross.png" style="width: 40%; position: absolute; top: 0px; left: 30%;" class="fragment plain-img">
             </div>
-            <p class="fragment"><small>* <a href="https://en.wikipedia.org/wiki/Peter_Norvig">Peter Norvig</a></small></p>
+            <p class="fragment">
+              <small>
+                * <a href="https://en.wikipedia.org/wiki/Peter_Norvig">Peter Norvig</a>
+                <span class="fragment">[<a href="https://www.youtube.com/watch?v=dIEStL7riMo">vídeo</a>]</span>
+              </small>
+              </p>
           </section>
 
           <section>
@@ -95,22 +100,8 @@
 
         <section>
           <section>
-            <h1>TDD</h1>
-            <h2>Test Driven Development</h2>
-          </section>
-          <section>
-            <h3>Millora la qualitat del codi</h3>
-            <ul>
-              <li class="fragment">Dependències explícites</li>
-              <li class="fragment">+20% temps de desenvolupament...</li>
-              <li class="fragment">-80% temps de manteniment</li>
-            </ul>
-          </section>
-        </section>
-
-        <section>
-          <section>
             <h1>Anam per feina</h1>
+            <pre class="fragment"><code data-trim contenteditable class="bash">$ git clone git@github.com:jordillull/unit-tests-uib-2015.git</code></pre>
           </section>
           <section>
             <h2>Python unittest</h2>
@@ -139,7 +130,7 @@ if __name__ == '_main__':
             </section>
 
           <section>
-            <pre><code data-trim contenteditable>
+            <pre><code data-trim contenteditable class="bash">
 $ python3 mytest.py
 E
 ======================================================================
@@ -161,7 +152,7 @@ FAILED (errors=1)
 
           <section>
             <h2>Oops</h2>
-            <pre class=""><code data-trim contenteditable>
+            <pre class=""><code data-trim contenteditable class="python">
 def toUpper(str):
     new_str = ""
     for chr in str:
@@ -169,7 +160,7 @@ def toUpper(str):
 
     return str
             </code></pre>
-            <pre class="fragment"><code data-trim contenteditable>
+            <pre class="fragment"><code data-trim contenteditable class="python">
 def toUpper(str):
     new_str = ""
     for chr in str:
@@ -181,7 +172,7 @@ def toUpper(str):
 
           <section>
             <h2>Oops x2</h2>
-            <pre class=""><code data-trim contenteditable>
+            <pre class=""><code data-trim contenteditable class="bash">
 $ python3 mytest.py
 F
 ======================================================================
@@ -203,7 +194,7 @@ FAILED (failures=1)
           </section>
           <section>
             <h2>Oops x2</h2>
-            <pre class=""><code data-trim contenteditable>
+            <pre class=""><code data-trim contenteditable class="python">
 def toUpper(str):
     new_str = ""
     for chr in str:
@@ -213,7 +204,9 @@ def toUpper(str):
             </code></pre>
           </section>
           <section>
-            <pre class=""><code data-trim contenteditable>$ python3 mytest.py
+            <h2>Ok!</h2>
+            <pre class=""><code data-trim contenteditable class="bash">
+$ python3 mytest.py
 .
 ----------------------------------------------------------------------
 Ran 1 test in 0.000s
@@ -224,8 +217,26 @@ OK
         </section>
         </section>
 
+        <section>
+          <section>
+            <h1>Mocks</h1>
+          </section>
+          <section>
+            <h2>Testejam funcionalitats de manera independent</h2>
+          </section>
+        </section>
 
         <section>
+          <section>
+            <h1>TDD</h1>
+            <h2>Test Driven Development</h2>
+          </section>
+          <section>
+            <h3>Escrivim primer els tests. Després desenvolupam.</h3>
+          </section>
+        </section>
+
+       <section>
           <section>
             <h1>Integració continua</h1>
           </section>
