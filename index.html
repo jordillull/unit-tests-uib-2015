@@ -56,7 +56,7 @@
 
          <section>
            <section>
-            <h1>Què son els tests?</h1>
+            <h1>Què són els tests?</h1>
            </section>
          </section>
 
@@ -219,7 +219,7 @@ Ran 1 test in 0.000s
 OK
 
             </code></pre>
-        </section>
+          </section>
         </section>
 
         <section>
@@ -342,11 +342,87 @@ class MockTest(unittest.TestCase):
        <section>
           <section>
             <h1>Integració continua</h1>
+            <pre class="fragment"><code data-trim contenteditable class="bash">$ git clone git@github.com:jordillull/quantum-computing.git</code></pre>
           </section>
         </section>
 
-      </div>
+      <section>
+        <section>
+          <h1>Selenium</h1>
+        </section>
+        <section>
+          <pre class=""><code data-trim contenteditable class="python">
+from selenium import webdriver
+import unittest
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions
+from selenium.webdriver.common.by import By
 
+SEARCH_URL = "http://www.google.es"
+MAX_WAIT_TIME = 10
+
+class TestHabitissimo(unittest.TestCase):
+
+    def __init__(self, methodName):
+        super().__init__(methodName)
+        self.driver = webdriver.Firefox()
+
+           </code></pre>
+           <pre class="fragment"><code data-trim contenteditable class="python">
+.   def search_on_google(self):
+        self.driver.get(SEARCH_URL)
+        search_input = self.driver.find_element_by_id("lst-ib")
+        search_input.send_keys("habitissimo")
+        search_input.submit()
+
+	def test_habitissimo_is_first_result(self):
+		self.search_on_google()
+          </code></pre>
+        </section>
+        <section>
+          <pre class=""><code data-trim contenteditable class="python">
+    def test_habitissimo_is_first_result(self):
+      self.search_on_google()
+
+      first_result = self.wait_for_1st_google_result()
+      first_result.find_element_by_tag_name("a").click()
+
+      self.wait_for_redirect("http://www.habitissimo.es")
+      self.assertIs(True, "habitissimo.es" in self.driver.current_url )
+          </code></pre>
+          <pre class="fragment"><code data-trim contenteditable class="python">
+.   def wait_for_1st_google_result(self):
+        wait = WebDriverWait(self.driver, MAX_WAIT_TIME)
+        first_result = wait.until(
+            expected_conditions.element_to_be_clickable( (By.CLASS_NAME, "g") )
+        )
+        return first_result
+
+    def wait_for_redirect(self, url_to_wait_for):
+        wait_for_redirect = WebDriverWait(self.driver, MAX_WAIT_TIME)
+        wait_for_redirect.until(lambda driver: url_to_wait_for in driver.current_url)
+          </code></pre>
+        </section>
+      </section>
+
+      <section>
+        <section>
+          <h2>Conclusions</h2>
+          <ul>
+            <li class="fragment">Augmenten de la qualitat del codi</li>
+            <li class="fragment">+20% temps desenvolupament</li>
+            <li class="fragment">-60% de manteniment</li>
+            <li class="fragment">Millor començar per tests d'acceptació</li>
+          </ul>
+        </section>
+      </section>
+      <section>
+        <section>
+          <h1>Preguntes</h1>
+          <h1>?</h1>
+        </section>
+      </section>
+      </div>
       <div class="slides-footer">
         <a href="http://www.habitissimo.es/empleo" target="blank">
           <img alt="Log Habitissimo" src="img/logo-habitissimo.png"/>
