@@ -39,5 +39,11 @@ class MockTest(unittest.TestCase):
         self.assertEqual(user.email, self.TEST_EMAIL)
         self.assertEqual(user.name, self.TEST_NAME)
 
+    def testRegisterUserThrowsNotImplemented(self):
+
+        with self.assertRaises(NotImplementedError):
+            user = registerUser(self.TEST_EMAIL, self.TEST_NAME, DB(), Mailer())
+
+
 if __name__ == '__main__':
     unittest.main()
